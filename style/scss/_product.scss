@@ -1,0 +1,57 @@
+input:not([type=submit]):not([type=checkbox]){
+    border-radius: 40px !important;
+    padding: .375rem .75rem !important;
+    // border-color: #dc3545 !important;
+    font-size: 1rem !important;
+}
+
+#onj-pincode-check {
+    margin-bottom: 15px;
+
+    h4 {
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    #btnOnjCheckPincode {
+        background: none;
+        border: 1px solid #222;
+        color: #222;
+        margin-left: 10px;
+        padding: 5px 15px;
+    }
+
+    #onj_zipcode {
+        width: 136px !important;
+    }
+
+    .product-form {
+        
+        .product-form {
+            display: flex;
+        }
+    }
+}
+
+.main-zip-code {
+
+    .zip-icon-text {
+        font-size: 14px;
+        font-weight: bold !important;
+        text-transform: uppercase;
+    }
+
+    .zip-app-btn {
+        border: 1px solid #000 !important;
+    }
+
+    #preview-placeholder {
+        border-width: 1px !important;
+        width: 136px !important;
+    }
+}
+
+.price.price_varies {
+    display: none !important;
+}
