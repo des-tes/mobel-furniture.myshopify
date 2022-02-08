@@ -55,3 +55,15 @@ input:not([type=submit]):not([type=checkbox]){
 .price.price_varies {
     display: none !important;
 }
+
+.scall-for-price {
+    padding: 7px 25px;
+    font-family: sans-serif;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 1px solid #000;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: inline-block;
+}

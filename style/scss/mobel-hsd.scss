@@ -1,7 +1,7 @@
 .hsd-bs4 {
 
     // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
-    @import "D:/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/functions";
+    @import "D:/Library/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/functions";
 
     // 2. Include any default variable overrides here
     $spacer: 1rem !default;
@@ -25,17 +25,18 @@
     );
 
     // 3. Include remainder of required Bootstrap stylesheets
-    @import "D:/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/variables";
-    @import "D:/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/mixins";
+    @import "D:/Library/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/variables";
+    @import "D:/Library/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/mixins";
 
     // 4. Include any optional Bootstrap components as you like
-    // @import "D:/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/reboot";
-    // @import "D:/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/type";
-    // @import "D:/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/images";
-    // @import "D:/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/code";
-    @import "D:/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/forms";    
-    @import "D:/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/buttons";    
-    @import "D:/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/utilities";    
+    // @import "D:/Library/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/reboot";
+    // @import "D:/Library/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/type";
+    // @import "D:/Library/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/images";
+    // @import "D:/Library/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/code";
+    @import "D:/Library/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/grid";
+    @import "D:/Library/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/forms";    
+    @import "D:/Library/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/buttons";    
+    @import "D:/Library/bootstrap/bootstrap-v4/node_modules/bootstrap/scss/utilities";    
 
     // Then add additional custom code here
     $color-white: #fff;
@@ -216,6 +217,35 @@
 
             li {
                 text-align: center;
+            }
+        }
+    }
+}
+
+// other setting
+.nt_menu {
+    @media (min-width: 752px){
+        >li {
+            >a {
+                font-size: 13px !important;
+                padding: 0 !important;
+                padding-right: 22px !important;                
+            }
+        }
+
+        div.menu-item {
+            >a {
+                font-size: 13px;
+            }
+        }
+
+        ul {
+
+            li {
+
+                a {
+                    font-size: 13px;
+                }
             }
         }
     }
