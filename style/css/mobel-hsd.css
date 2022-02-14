@@ -7105,6 +7105,19 @@ input:not([type=submit]):not([type=checkbox]) {
   display: inline-block;
 }
 
+.variations_form .quantity {
+  display: none !important;
+}
+
+.tool::before {
+  background: unset !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: unset !important;
+  text-align: left !important;
+  text-indent: unset !important;
+}
+
 .hover_button.des_btns_pr_1 .pr_atc {
   display: none;
 }

@@ -67,3 +67,19 @@ input:not([type=submit]):not([type=checkbox]){
     margin-bottom: 10px;
     display: inline-block;
 }
+
+.variations_form {
+
+    .quantity {
+        display: none !important;
+    }
+}
+
+.tool::before {
+    background: unset !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: unset !important;
+    text-align: left !important;
+    text-indent: unset !important;
+}
