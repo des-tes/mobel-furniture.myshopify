@@ -1,0 +1,76 @@
+.image-carousel {
+
+    .owl-carousel {
+        
+        .item {
+            overflow: hidden;
+
+            .content {
+
+                a {
+                    &::after {
+                        @extend .transition-5ms;
+                    }
+                }
+            }
+            
+            img {
+                @extend .transition-5ms;
+            }
+
+            &:hover {
+
+                .content {
+
+                    a {
+                        &::after {
+                            @extend .transition-5ms;
+                            padding-left: 5px;
+                        }
+                    }
+                }
+                
+                img {
+                    @extend .transition-5ms;
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+
+
+    .content {
+        position: absolute;
+        z-index: 10;
+
+        h3 {
+            color: $color-white;
+            font-size: 30px;
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 0 0 30px #000;
+        }
+
+        a {
+            color: $color-white;
+            font-size: 16px;
+            font-weight: 600;
+            text-shadow: 0 0 15px #000;
+
+            &::after {
+                font-family: 'Line Awesome Free';
+                font-weight: 900;
+                content: "\f061";
+                display: inline-block;
+                margin-left: 5px;
+                font-size: 16px;
+                color: currentColor;                
+            }
+        }
+
+        &.top {
+            left: 8%;
+            top: 8%;
+        }
+    }
+}

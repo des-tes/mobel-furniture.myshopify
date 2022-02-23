@@ -1,0 +1,20 @@
+.video-gallery {
+    background: #f6f6f6;
+    
+    .comment {
+        color: #010101;
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 28px;
+        text-align: center;
+    }
+
+    .grid {
+
+        @include media-breakpoint-up(sm){
+            li {
+                vertical-align: middle;
+            }
+        }
+    }
+}

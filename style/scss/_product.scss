@@ -35,6 +35,19 @@ input:not([type=submit]):not([type=checkbox]){
 }
 
 .main-zip-code {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+
+    .app-input-btn {
+        max-width: 300px !important;
+        margin-left: 15px;
+    }
+
+    .zip-location-icon-text {
+        width: 100%;
+    }
 
     .zip-icon-text {
         font-size: 14px;
