@@ -1,4 +1,97 @@
 /**
+ * @fileoverview dragscroll - scroll area by dragging
+ * @version 0.0.8
+ * 
+ * @license MIT, see http://github.com/asvd/dragscroll
+ * @copyright 2015 asvd <heliosframework@gmail.com> 
+ */
+
+
+ (function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['exports'], factory);
+    } else if (typeof exports !== 'undefined') {
+        factory(exports);
+    } else {
+        factory((root.dragscroll = {}));
+    }
+}(this, function (exports) {
+    var _window = window;
+    var _document = document;
+    var mousemove = 'mousemove';
+    var mouseup = 'mouseup';
+    var mousedown = 'mousedown';
+    var EventListener = 'EventListener';
+    var addEventListener = 'add'+EventListener;
+    var removeEventListener = 'remove'+EventListener;
+    var newScrollX, newScrollY;
+
+    var dragged = [];
+    var reset = function(i, el) {
+        for (i = 0; i < dragged.length;) {
+            el = dragged[i++];
+            el = el.container || el;
+            el[removeEventListener](mousedown, el.md, 0);
+            _window[removeEventListener](mouseup, el.mu, 0);
+            _window[removeEventListener](mousemove, el.mm, 0);
+        }
+
+        // cloning into array since HTMLCollection is updated dynamically
+        dragged = [].slice.call(_document.getElementsByClassName('dragscroll'));
+        for (i = 0; i < dragged.length;) {
+            (function(el, lastClientX, lastClientY, pushed, scroller, cont){
+                (cont = el.container || el)[addEventListener](
+                    mousedown,
+                    cont.md = function(e) {
+                        if (!el.hasAttribute('nochilddrag') ||
+                            _document.elementFromPoint(
+                                e.pageX, e.pageY
+                            ) == cont
+                        ) {
+                            pushed = 1;
+                            lastClientX = e.clientX;
+                            lastClientY = e.clientY;
+
+                            e.preventDefault();
+                        }
+                    }, 0
+                );
+
+                _window[addEventListener](
+                    mouseup, cont.mu = function() {pushed = 0;}, 0
+                );
+
+                _window[addEventListener](
+                    mousemove,
+                    cont.mm = function(e) {
+                        if (pushed) {
+                            (scroller = el.scroller||el).scrollLeft -=
+                                newScrollX = (- lastClientX + (lastClientX=e.clientX));
+                            scroller.scrollTop -=
+                                newScrollY = (- lastClientY + (lastClientY=e.clientY));
+                            if (el == _document.body) {
+                                (scroller = _document.documentElement).scrollLeft -= newScrollX;
+                                scroller.scrollTop -= newScrollY;
+                            }
+                        }
+                    }, 0
+                );
+             })(dragged[i++]);
+        }
+    }
+
+      
+    if (_document.readyState == 'complete') {
+        reset();
+    } else {
+        _window[addEventListener]('load', reset, 0);
+    }
+
+    exports.reset = reset;
+}));
+
+
+/**
  * Owl Carousel v2.3.4
  * Copyright 2013-2018 David Deutsch
  * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
@@ -42,6 +135,64 @@
 jQuery(document).ready(function ($) {
 
     // owlCarousel
+    $('.home-banner .owl-carousel').owlCarousel({
+        animateOut: 'fadeOut',
+        animateIn: 'fadeIn',
+        navText: ['<i class="fal fa-chevron-left"></i>', '<i class="fal fa-chevron-right"></i>'],
+        navSpeed: 1000,
+        loop: true,
+        autoplay: false,
+        autoplaySpeed: 1000,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1,
+                loop: true,
+                autoplay: true
+            },
+            768: {
+                items: 1,
+                loop: false,
+                margin: 30,
+                autoplay: false
+            },
+            1000: {
+                items: 1,
+                nav: false,
+                dots: true
+            }
+        }
+    });
+
+    /* $('.home-banner .owl-carousel').owlCarousel({
+        animateOut: 'fadeOut',
+        animateIn: 'fadeIn',
+        mouseDrag: false,
+        touchDrag: false,
+        margin: 0,
+        nav: true,
+        navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+        dots: ture,
+        loop: true,
+        autoplay: false,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: false,
+        responsive: {
+            0: {
+                items: 1,
+                nav: false,
+                dots: true
+            },
+            768: {
+                items: 1
+            },
+            1000: {
+                items: 1
+            }
+        }
+    }); */
+
     $('.image-carousel .owl-carousel').owlCarousel({
         nav: false,
         navText: ['<i class="fal fa-chevron-left"></i>', '<i class="fal fa-chevron-right"></i>'],
@@ -94,7 +245,7 @@ function handleClick(cnname, cnemail, cnmobile, cweb, ccomp) {
     //window.document.getElementById('btnWait').style.display = '';
     var url = 'https://mobel.digilead.co.in/mobelsave.aspx';
 
-    var cid = '0010189';
+    var cid = '0010197';
     if (GetParameterValues("cid") != null) {
         cid = GetParameterValues("cid");
     }
@@ -335,7 +486,7 @@ function handleClickproduct(cnname, cnemail, cnmobile, cweb, ccomp) {
     //window.document.getElementById('btnWait').style.display = '';
     var url = 'https://mobel.digilead.co.in/mobelsave.aspx';
 
-    var cid = '0010189';
+    var cid = '0010197';
     if (GetParameterValues("cid") != null) {
         cid = GetParameterValues("cid");
     }
@@ -460,4 +611,142 @@ $('.swatches-select').on('click', function () {
 
 })
 
+function kitenq(el) {
+    //   alert("test"); 
+    if (window.document.getElementById('kitname').value.length < 1) {
+        alert("Please enter name");
+        return false;
+    }
 
+    if (window.document.getElementById('kitmobile').value.length < 10) {
+        alert("Please enter mobile number");
+        return false;
+    }
+
+    if (window.document.getElementById('kitemail').value.length < 1) {
+        alert("Please enter email");
+        return false;
+    }
+
+    /* if (window.document.getElementById('countryCode1').value == "-1") {
+        alert("Please enter country code");
+        return false;
+    } */
+
+    /*if (window.document.getElementById('cCompany').value.length < 1) {
+        alert("Please enter company name");
+        return false;
+    }*/
+
+    /*if (window.document.getElementById('cWebsite').value.length < 1) {
+        alert("Please enter company website");
+        return false;
+    }*/
+
+    var x = window.document.getElementById('kitemail').value;
+
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+        alert("Not a valid e-mail address");
+        return false;
+    }
+    // var smob= '(' + $("#countryCode1").val() + ') ' + window.document.getElementById('cMobile').value;
+    handleClickkitchen(window.document.getElementById('kitname').value,
+        window.document.getElementById('kitemail').value,
+        window.document.getElementById('kitmobile').value,
+        window.document.getElementById('kitremarks').value, '');
+
+    // after click button disabled
+    $(el).attr('disabled', '');
+    $(el).children('i').removeClass('d-none');
+}
+function handleClickkitchen(cnname, cnemail, cnmobile, cweb, ccomp) {
+
+    //var userpk =  localStorage.userpk.toString();
+    // window.document.getElementById('register-button1').style.display = 'none';
+    //window.document.getElementById('btnWait').style.display = '';
+    var url = 'https://mobel.digilead.co.in/mobelsave.aspx';
+
+    var cid = '0010197';
+    if (GetParameterValues("cid") != null) {
+        cid = GetParameterValues("cid");
+    }
+    var tracking = "";
+    if (GetParameterValues("tracking") != null) {
+        tracking = GetParameterValues("tracking");
+    }
+    var target = "";
+    if (GetParameterValues("target") != null) {
+        target = GetParameterValues("target");
+    }
+    var keyword = "";
+    if (GetParameterValues("keyword") != null) {
+        keyword = GetParameterValues("keyword");
+    }
+    var matchtype = "";
+    if (GetParameterValues("matchtype") != null) {
+        matchtype = GetParameterValues("matchtype");
+    }
+    var device = "";
+    if (GetParameterValues("device") != null) {
+        device = GetParameterValues("device");
+    }
+    var placement = "";
+    if (GetParameterValues("placement") != null) {
+        placement = GetParameterValues("placement");
+    }
+    var mcreative = ""
+    if (GetParameterValues("creative") != null) {
+        mcreative = GetParameterValues("creative");
+    }
+    var utm_source = ""
+    if (GetParameterValues("utm_source") != null) {
+        utm_source = GetParameterValues("utm_source");
+    }
+    var utm_medium = ""
+    if (GetParameterValues("utm_medium") != null) {
+        utm_medium = GetParameterValues("utm_medium");
+    }
+    var utm_campaign = ""
+    if (GetParameterValues("utm_campaign") != null) {
+        utm_campaign = GetParameterValues("utm_campaign");
+    }
+    var utm_content = ""
+    if (GetParameterValues("utm_content") != null) {
+        utm_content = GetParameterValues("utm_content");
+    }
+    var utm_term = ""
+    if (GetParameterValues("utm_term") != null) {
+        utm_term = GetParameterValues("utm_term");
+    }
+
+    var countryCode = cweb + ' ' + ccomp;
+
+    /*alert(cnname);
+    alert(cnemail);
+    alert(cnmobile);
+    alert(countryCode);*/
+
+    $.ajax({
+        contentType: "application/json",
+        dataType: 'jsonp',
+        crossDomain: true,
+        type: 'GET',
+        crossDomain: true,
+        url: url,
+        data: { utm_source: utm_source, utm_medium: utm_medium, utm_campaign: utm_campaign, utm_content: utm_content, utm_term: utm_term, mc: mcreative, tracking: tracking, target: target, keyword: keyword, matchtype: matchtype, device: device, placement: placement, cid: cid, mname: cnname, memail: cnemail, mmob: cnmobile, msource: '', mMsg: countryCode },
+
+        success: function (res) {
+            alert('Your enquiry submitted successfully');
+            $("#ContactFormAsk").submit();
+
+        },
+        error: function (e) {
+            // alert(e.message);
+        },
+        complete: function (data) {
+            // alert(e.message);
+        }
+    });
+}

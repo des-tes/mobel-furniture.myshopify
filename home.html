@@ -1,0 +1,134 @@
+<!-- banner section -->
+<div class="hsd-bs4">
+    <section class="home-banner">
+        <div class="owl-carousel owl-theme">
+            <div class="item">
+                <div class="content">
+                    <div class="h1">bedroom</div>
+                    <div class="space_banner dib"></div>
+                    <p>sleep like a baby</p>
+                    <a href="//mobelindia.com/collections/bedroom-set" class="btn btn-dark">shop now</a>
+                </div>
+                <img src="//cdn.shopify.com/s/files/1/0520/1372/7893/files/banner1_e269f04c-e62e-4c19-82d7-9005386148dc_1512x.jpg?v=1645601873"
+                    alt="" class="d-none d-md-block">
+                <img src="//cdn.shopify.com/s/files/1/0520/1372/7893/files/banner1-m_6290856d-d846-4016-819e-28975051f60b_900x.jpg?v=1645608514"
+                    alt="" class="d-block d-md-none">
+            </div>
+            <div class="item">
+                <div class="content">
+                    <div class="h1">sofa sets</div>
+                    <p>for your cozy living space</p>
+                    <a href="//mobelindia.com/collections/sofa-sets" class="btn btn-dark">shop now</a>
+                </div>
+                <img src="//cdn.shopify.com/s/files/1/0520/1372/7893/files/banner2_0f74f961-ff1f-43ac-a622-008b80f7899d_1950x.jpg?v=1645602134"
+                    alt="" class="d-none d-md-block">
+                <img src="//cdn.shopify.com/s/files/1/0520/1372/7893/files/banner2-m_82088dd4-08ca-40fb-952e-6ceec18d546c_900x.jpg?v=1645608557"
+                    alt="" class="d-block d-md-none">
+            </div>
+            <div class="item">
+                <div class="content">
+                    <div class="h1">dining tables</div>
+                    <div class="space_banner dib"></div>
+                    <p>for family time!</p>
+                    <a href="//mobelindia.com/collections/dining-sets" class="btn btn-dark">shop now</a>
+                </div>
+                <img src="//cdn.shopify.com/s/files/1/0520/1372/7893/files/banner3_17b8c522-1d32-4d32-a919-69de656a01c1_1512x.jpg?v=1645604946"
+                    alt="" class="d-none d-md-block">
+                <img src="//cdn.shopify.com/s/files/1/0520/1372/7893/files/banner3-m_266bfed5-bd22-41aa-9483-12d23ed69a09_900x.jpg?v=1645608594"
+                    alt="" class="d-block d-md-none">
+            </div>
+            <div class="item">
+                <div class="content">
+                    <div class="h1">office furniture</div>
+                    <p>for your workspace</p>
+                    <a href="//mobelindia.com/collections/dining-sets" class="btn btn-dark">shop now</a>
+                </div>
+                <img src="//cdn.shopify.com/s/files/1/0520/1372/7893/files/banner4_b3686dbf-f999-4459-8d3d-cf9860dcea8f_1512x.jpg?v=1645602417"
+                    alt="" class="d-none d-md-block">
+                <img src="//cdn.shopify.com/s/files/1/0520/1372/7893/files/banner4-m_e0870f56-55d9-45ed-85a8-28a4278f4e5e_900x.jpg?v=1645608633"
+                    alt="" class="d-block d-md-none">
+            </div>
+            <div class="item">
+                <div class="content">
+                    <div class="h1">modular kitchen</div>
+                    <div class="space_banner dib"></div>
+                    <p>kitchens designed for indian homes</p>
+                    <a href="//mobelindia.com/collections/dining-sets" class="btn btn-dark">shop now</a>
+                </div>
+                <img src="//cdn.shopify.com/s/files/1/0520/1372/7893/files/modular-kitchen.jpg?v=1645689115" alt=""
+                    class="d-none d-md-block">
+                <img src="//cdn.shopify.com/s/files/1/0520/1372/7893/files/modular-kitchen-m.jpg?v=1645689115" alt=""
+                    class="d-block d-md-none">
+            </div>
+        </div>
+    </section>
+</div>
+<!-- end banner section -->
+
+<!-- category scroller -->
+<div class="hsd-bs4">
+    <section class="category-scroller">
+        <div class="container-fluid">
+            <h3 class="section-title tc pr flex fl_center al_center fs__24 title_8">
+                <span class="mr__10 ml__10">What are you looking for?</span>
+            </h3>
+            <ul class="dragscroll">
+                {% for collection in collections %}
+                <li>                    
+                    <div class="info-box icon-top">
+                        <figure>
+                            <a href="{{collection.url}}">
+                                <img src="{{ collection.metafields.my_fields.icon_image | img_url:'master' }}"  />
+                            </a>
+                        </figure>
+                        <div class="desc">
+                            </a><h4><a href="{{collection.url}}">{{collection.title}}</a></h4>
+                        </div>
+                    </div>                    
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+</div>
+<!-- end category carousel -->
+
+<!-- video section -->
+<div class="hsd-bs4">
+    <div class="video-gallery py-5">
+        <div class="container-fluid">
+            <h3 class="section-title tc pr flex fl_center al_center fs__24 title_8"><span class="mr__10 ml__10">Why
+                    Mobel?</span></h3>
+            <ul class="grid three">
+                <li>
+                    <a href="//cdn.shopify.com/s/files/1/0520/1372/7893/files/You_have_One_Life_to_Live_Make_it_Beautiful_-_MoBEL_Furniture_1.mp4?v=1645530797"
+                        data-fancybox="">
+                        <video loop="" muted="" autoplay="" playsinline="" style="width: 100%;">
+                            <!-- <video controls style="width: 100%;"> -->
+                            <source
+                                src="//cdn.shopify.com/s/files/1/0520/1372/7893/files/You_have_One_Life_to_Live_Make_it_Beautiful_-_MoBEL_Furniture_1.mp4?v=1645530797">
+                            </source>
+                        </video>
+                    </a>
+                    <p class="comment">Large scale manufacturing facility</p>
+                </li>
+                <li>
+                    <a href="//cdn.shopify.com/s/files/1/0520/1372/7893/files/WhatsApp_Video_2022-02-24_at_2.11.09_PM.mp4?v=1645692122"
+                        data-fancybox="">
+                        <img src="//cdn.shopify.com/s/files/1/0520/1372/7893/files/Untitled_design_-_2022-02-24T125753.108.png?v=1645691805"
+                            alt="">
+                    </a>
+                    <p class="comment">Over 50,000 happy customers</p>
+                </li>
+                <li>
+                    <a href="//cdn.shopify.com/s/files/1/0520/1372/7893/files/mobel_walkthrough.mp4?v=1645698030"
+                        data-fancybox="">
+                        <img src="//cdn.shopify.com/s/files/1/0520/1372/7893/files/vdo-thumb.jpg?v=1645699343" alt="">
+                    </a>
+                    <p class="comment">One stop shop for furniture &amp; interiors</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- end video section -->

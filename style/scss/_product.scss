@@ -43,6 +43,7 @@ input:not([type=submit]):not([type=checkbox]){
     .app-input-btn {
         max-width: 300px !important;
         margin-left: 15px;
+        width: 170px !important;
     }
 
     .zip-location-icon-text {
@@ -85,6 +86,19 @@ input:not([type=submit]):not([type=checkbox]){
 
     .quantity {
         display: none !important;
+    }
+
+    @media (max-width: 751px){
+        .nt_add_w {
+            position: absolute !important;
+            z-index: 100;
+            margin: 20px;
+            left: 0;
+        }
+
+        button {
+            margin-left: 55px;
+        }
     }
 }
 
